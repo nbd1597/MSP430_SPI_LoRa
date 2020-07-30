@@ -1,0 +1,1 @@
+"./base64.o" "./main.o" "./mcu.o" "./spi.o" "./sx1276.o" "./uart.o" -T"../msp430g2553.ld" -Wl,--start-group -lgcc -lc -Wl,--end-group 
