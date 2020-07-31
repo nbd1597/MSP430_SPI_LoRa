@@ -16,7 +16,7 @@ void spi_init() {
   UCB0CTL1 = UCSWRST;
   UCB0CTL0 = UCSYNC + UCSPB + UCMSB + UCCKPH;   //UCMSB + UCMST + UCSYNC; // 3-pin, 8-bit SPI master
   UCB0CTL1 |= UCSSEL_2;                         // SMCLK
-  UCB0BR0 = 0x02;                               // Frequency CPU / 2 (16Mhz / 2 = 8 Mhz SPI)
+  UCB0BR0 = 0x02;                               // Frequency CPU / 8 (16Mhz / 2 = 8 Mhz SPI)
   UCB0BR1 = 0;
 
   P1SEL  |= SCLK | SDI | SDO;                   // P1.6 is MISO and P1.7 is MOSI
@@ -25,8 +25,8 @@ void spi_init() {
   P1DIR |= SCLK | SDO;
   P1DIR &= ~SDI;
 
-  P2DIR |= CS;// | CS2;                           // P2.0 CS (chip select)
-  P2OUT |= CS;// | CS2;
+  P1DIR |= CS;// | CS2;                           // P2.0 CS (chip select)
+  P1OUT |= CS;// | CS2;
 
   //P1DIR &= ~(INT1 | INT2);                      // P1.4 and P1.3 as INT (INTERRUPT, not used yet)
 
@@ -57,9 +57,9 @@ void spi_transfer(uint8_t data) {
 }
 
 void spi_chipEnable() {
-  P2OUT &= ~CS;
+  P1OUT &= ~CS;
 }
 
 void spi_chipDisable() {
-   P2OUT |= CS;
+   P1OUT |= CS;
 }

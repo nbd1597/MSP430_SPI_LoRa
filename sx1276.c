@@ -128,13 +128,13 @@ void sx1276_init(radio_events_t* events) {
 void sx1275_reset() {
     mcu_delayms(1);
 
-    P1DIR |= BIT4;
-    P1OUT |= BIT4;
+    P1DIR |= BIT3;
+    P1OUT |= BIT3;
 
     mcu_delayms(1);
 
-    P1OUT &= ~BIT4;
-    P1DIR &= ~BIT4;
+    P1OUT &= ~BIT3;
+    P1DIR &= ~BIT3;
 
     mcu_delayms(6);
 }
@@ -911,6 +911,7 @@ void sx1276_on_dio0irq() {
         break;
         case MODEM_LORA: {
           int8_t snr = 0;
+//          uart_write("step1\n\r");
 
           // Clear Irq
           sx1276_write(REG_LR_IRQFLAGS, RFLR_IRQFLAGS_RXDONE);
@@ -931,6 +932,7 @@ void sx1276_on_dio0irq() {
 
             break;
           }
+//          uart_write("step2\n\r");
 
           sx1276.Settings.LoRaPacketHandler.SnrValue = sx1276_read(REG_LR_PKTSNRVALUE);
           if(sx1276.Settings.LoRaPacketHandler.SnrValue & 0x80) { // The SNR sign bit is 1
@@ -964,15 +966,18 @@ void sx1276_on_dio0irq() {
             sx1276.Settings.State = RF_IDLE;
           }
           //TimerStop( &RxTimeoutTimer );
+//          uart_write("step3\n\r");
 
-          if((radio_events != 0) && (radio_events->RxDone != 0)) {
+          if((radio_events != 0) && (radio_events->RxDone != 0))
+          {
 //              uart_write
             OnRxDone(RxTxBuffer, sx1276.Settings.LoRaPacketHandler.Size, sx1276.Settings.LoRaPacketHandler.RssiValue, sx1276.Settings.LoRaPacketHandler.SnrValue);
 
-              uart_write("rxdone??");
+              uart_write("rxdone??\n\r");
               int j;
           j = 1000; //test
           }
+//          uart_write("step4\n\r");
         }
         break;
         default:
@@ -985,6 +990,7 @@ void sx1276_on_dio0irq() {
         case MODEM_LORA:
           // Clear Irq
           sx1276_write(REG_LR_IRQFLAGS, RFLR_IRQFLAGS_TXDONE);
+          OnTxDone();
         case MODEM_FSK:
         default:
           sx1276.Settings.State = RF_IDLE;

@@ -13,7 +13,9 @@ void mcu_init() {
   P2DIR &= 0x00;
 
   P2DIR &= ~BIT0;
-//  P2REN |= BIT0;
+//  P2DIR |= BIT5;
+
+  P2REN |= 0xFF;
   P2IE |= BIT0;
   P2IFG &= ~BIT0;
   P2IES &= ~BIT0;

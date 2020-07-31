@@ -27,9 +27,11 @@ void SendPing() {
   buffer[6] = 'N';
   buffer[7] = 'G';
 
+  P2IE &= ~BIT0;
   uart_write("send_started\n\r");
   sx1276_send(buffer, 8);
 //  sx1276_set_tx(10000);
+  P2IE |= BIT0;
 
 }
 
@@ -46,10 +48,13 @@ void main(void) {
   P1DIR |= BIT0;
 
   uart_init();
+  mcu_delayms(1000);
   uart_write("\n\n Start \n\n");
   spi_init();
+  mcu_delayms(1000);
   P2IE &= ~BIT0;
   rf_init_lora();
+  mcu_delayms(1000);
 
   uart_write("$IND \n,");
   uart_printhex8(sx1276_read(REG_VERSION));
@@ -64,20 +69,22 @@ void main(void) {
   uart_writec(',');
   uart_printhex8(LORA_CODINGRATE);
   uart_writec('\n');
-  uart_write("1? \n");
+  uart_write("1? \n\r");
 
-  uart_printhex8(sx1276_read(0x1D));
+  uart_printhex8(sx1276_read(0x01));
   uart_write("\n2? \n");
-  __delay_cycles(1000000);
-//  sx1276_set_rx(100000);
-  P2IE |= BIT0;
+
   __bis_SR_register(GIE);
+//  P2IE |= BIT0;
+//sx1276_set_rx(1000000);
+//  sx1276_set_tx(1000000);
 
 
+
+//SendPing();
   //while(1){ mcu_delayms(500); }
   state = 1;
-  SendPing();
-  __delay_cycles(1000000);
+
   while(1)
   {
 //    if(state == 0)
@@ -88,8 +95,11 @@ void main(void) {
 //    {
 //
 //    }
-//      SendPing();
 //
+////
+      SendPing();
+////////      sx1276_set_rx(100000);
+      mcu_delayms(1000);
   }
 
 }
@@ -117,8 +127,9 @@ __interrupt void Port_2(void)
 //        }
 
         //else OnRxDone(payload, size, rssi, snr);
-        uart_write("interrupt happens \r");
+        uart_write("interrupt happens \n\r");
         sx1276_on_dio0irq();
+//        sx1276_set_rx(100000);
 //        OnTxDone();
 //        SendPing();
 //        OnRxDone(buffer2, 32, sx1276.Settings.LoRaPacketHandler.RssiValue, sx1276.Settings.LoRaPacketHandler.SnrValue);
@@ -129,7 +140,7 @@ __interrupt void Port_2(void)
 
 
 void OnTxDone() {
-  uart_write("$TXS\n");
+  uart_write("sent\n\r");
 
 //  if(state == 1) sx1276_set_rx(0);
 
@@ -137,10 +148,10 @@ void OnTxDone() {
 
 void OnRxDone(uint8_t *payload, uint16_t size, int16_t rssi, int8_t snr) {
 
-    uart_write("txdone_start");
+    uart_write("txdone_start\r\n");
     P1OUT |= BIT0;
 
-  uart_write("$RXS,");
+  uart_write("$RXS,\n\r");
 
   uart_printhex32(rssi);
   uart_writec(',');
@@ -151,10 +162,17 @@ void OnRxDone(uint8_t *payload, uint16_t size, int16_t rssi, int8_t snr) {
   uart_printhex32(size);
   uart_writec(',');
 
-  base64_encode(payload, size);
-  uart_writec('\n');
+//  base64_encode(payload, size);
+  uart_write("\r\n*******\n\r");
+  uart_writec(payload[1]);
+  uart_writec(payload[2]);
+
+  uart_writec(payload[3]);
+  uart_writec(payload[4]);
+  uart_writec(payload[5]);
+  uart_write("\r\n*******\n\r");
   P1OUT &= ~BIT0;
-  uart_write("????");
+  uart_write("????\n\r");
 
 //  if(state == 1) SendPing();
 }
