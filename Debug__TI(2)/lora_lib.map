@@ -1,10 +1,10 @@
 ******************************************************************************
                   MSP430 Linker PC v20.2.0                     
 ******************************************************************************
->> Linked Fri Jul 31 16:24:23 2020
+>> Linked Fri Jul 31 21:48:05 2020
 
 OUTPUT FILE NAME:   <lora_lib.out>
-ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 0000e3e0
+ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 0000eaae
 
 
 MEMORY CONFIGURATION
@@ -14,12 +14,12 @@ MEMORY CONFIGURATION
   SFR                   00000000   00000010  00000000  00000010  RWIX
   PERIPHERALS_8BIT      00000010   000000f0  00000000  000000f0  RWIX
   PERIPHERALS_16BIT     00000100   00000100  00000000  00000100  RWIX
-  RAM                   00000200   00000200  000001d9  00000027  RWIX
+  RAM                   00000200   00000200  000001b9  00000047  RWIX
   INFOD                 00001000   00000040  00000000  00000040  RWIX
   INFOC                 00001040   00000040  00000000  00000040  RWIX
   INFOB                 00001080   00000040  00000000  00000040  RWIX
   INFOA                 000010c0   00000040  00000000  00000040  RWIX
-  FLASH                 0000c000   00003fde  000026b6  00001928  RWIX
+  FLASH                 0000c000   00003fde  00002d54  0000128a  RWIX
   BSLSIGNATURE          0000ffde   00000002  00000002  00000000  RWIX  ffff 
   INT00                 0000ffe0   00000002  00000002  00000000  RWIX
   INT01                 0000ffe2   00000002  00000000  00000002  RWIX
@@ -44,106 +44,105 @@ SECTION ALLOCATION MAP
  output                                  attributes/
 section   page    origin      length       input sections
 --------  ----  ----------  ----------   ----------------
-.bss       0    00000200    00000186     UNINITIALIZED
+.bss       0    00000200    00000166     UNINITIALIZED
                   00000200    00000100     sx1276.obj (.bss:RxTxBuffer)
                   00000300    00000056     (.common:sx1276)
-                  00000356    00000020     (.common:buffer)
-                  00000376    0000000e     main.obj (.bss:radio_events)
-                  00000384    00000002     sx1276.obj (.bss)
+                  00000356    0000000e     main.obj (.bss:radio_events)
+                  00000364    00000002     sx1276.obj (.bss)
 
-.data      0    00000386    00000003     UNINITIALIZED
-                  00000386    00000002     main.obj (.data)
-                  00000388    00000001     spi.obj (.data)
+.data      0    00000366    00000003     UNINITIALIZED
+                  00000366    00000002     main.obj (.data)
+                  00000368    00000001     spi.obj (.data)
 
 .stack     0    000003b0    00000050     UNINITIALIZED
                   000003b0    00000002     rts430_eabi.lib : boot.c.obj (.stack)
                   000003b2    0000004e     --HOLE--
 
-.text      0    0000c000    0000254c     
+.text      0    0000c000    00002c40     
                   0000c000    00000478     rts430_eabi.lib : frcdivd.c.obj (.text:__TI_frcdivd)
                   0000c478    00000448     sx1276.obj (.text:sx1276_set_txconfig)
                   0000c8c0    000003d8     sx1276.obj (.text:sx1276_set_rxconfig)
-                  0000cc98    000002e4     sx1276.obj (.text:sx1276_on_dio0irq)
-                  0000cf7c    00000286     rts430_eabi.lib : frcmpyd.c.obj (.text:__TI_frcmpyd)
-                  0000d202    0000026e                     : mpyd.c.obj (.text:__mspabi_mpyd)
-                  0000d470    00000238                     : divd.c.obj (.text:__mspabi_divd)
-                  0000d6a8    00000112     sx1276.obj (.text:sx1276_send)
-                  0000d7ba    000000e4     sx1276.obj (.text:sx1276_rxchain_calibration)
-                  0000d89e    000000da     main.obj (.text:main)
-                  0000d978    000000ba     main.obj (.text:rf_init_lora)
-                  0000da32    000000b0     sx1276.obj (.text:sx1276_set_tx)
-                  0000dae2    000000a0     main.obj (.text:OnRxDone)
-                  0000db82    0000008a     rts430_eabi.lib : fltuld.c.obj (.text:__mspabi_fltuld)
-                  0000dc0c    0000007c                     : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
-                  0000dc88    00000074                     : fixdul.c.obj (.text:__mspabi_fixdul)
-                  0000dcfc    00000072     sx1276.obj (.text:sx1276_set_modem)
-                  0000dd6e    0000006c     uart.obj (.text:uart_printhex32)
-                  0000ddda    0000006a     sx1276.obj (.text:sx1276_init)
-                  0000de44    0000005c     rts430_eabi.lib : lsr32.asm.obj (.text:l_lsr_const)
-                  0000dea0    0000005c     sx1276.obj (.text:sx1276_get_fsk_bandwidthregvalue)
-                  0000defc    00000058     rts430_eabi.lib : div32u.asm.obj (.text)
-                  0000df54    00000058     sx1276.obj (.text:sx1276_set_channel)
-                  0000dfac    00000056     uart.obj (.text:uart_printhex8)
-                  0000e002    0000004c     rts430_eabi.lib : lsr16.asm.obj (.text)
-                  0000e04e    00000048     mcu.obj (.text:mcu_init)
-                  0000e096    00000046     main.obj (.text:SendPing)
-                  0000e0dc    00000042     rts430_eabi.lib : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
-                  0000e11e    0000003e                     : asr32.asm.obj (.text:l_asr_const)
-                  0000e15c    0000003e                     : lsl32.asm.obj (.text:l_lsl_const)
-                  0000e19a    0000003e     spi.obj (.text:spi_init)
-                  0000e1d8    0000003e     sx1276.obj (.text:sx1276_read_buffer)
-                  0000e216    0000003a     sx1276.obj (.text:sx1276_write_buffer)
-                  0000e250    0000002e     uart.obj (.text:uart_init)
-                  0000e27e    0000002c     main.obj (.text:Port_2)
-                  0000e2aa    0000002c     rts430_eabi.lib : asr16.asm.obj (.text)
-                  0000e2d6    0000002c                     : lsl16.asm.obj (.text)
-                  0000e302    0000002c     sx1276.obj (.text:sx1275_reset)
-                  0000e32e    00000026     rts430_eabi.lib : mult32.asm.obj (.text)
-                  0000e354    00000026     sx1276.obj (.text:sx1276_read)
-                  0000e37a    00000024     sx1276.obj (.text:sx1276_write)
-                  0000e39e    00000022     mcu.obj (.text:mcu_delayms)
-                  0000e3c0    00000020     uart.obj (.text:uart_write)
-                  0000e3e0    0000001c     rts430_eabi.lib : boot.c.obj (.text:_c_int00_noargs)
-                  0000e3fc    0000001c     sx1276.obj (.text:sx1276_set_opmode)
-                  0000e418    00000016     rts430_eabi.lib : div16u.asm.obj (.text)
-                  0000e42e    00000014                     : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset:__TI_zero_init_nomemset)
-                  0000e442    00000014                     : mult16.asm.obj (.text)
-                  0000e456    00000012                     : fixdu.c.obj (.text:__mspabi_fixdu)
-                  0000e468    00000012                     : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
-                  0000e47a    00000012                     : lsr32.asm.obj (.text:l_lsr)
-                  0000e48c    00000012                     : memcpy.c.obj (.text:memcpy)
-                  0000e49e    00000010     mcu.obj (.text:mcu_memcpy1)
-                  0000e4ae    00000010     rts430_eabi.lib : epilog.asm.obj (.text)
-                  0000e4be    0000000c     spi.obj (.text:spi_recv)
-                  0000e4ca    0000000c     sx1276.obj (.text:sx1276_read_fifo)
-                  0000e4d6    0000000c     sx1276.obj (.text:sx1276_write_fifo)
-                  0000e4e2    0000000c     uart.obj (.text:uart_writec)
-                  0000e4ee    0000000a     main.obj (.text:OnRxError)
-                  0000e4f8    0000000a     main.obj (.text:OnTxDone)
-                  0000e502    0000000a     spi.obj (.text:spi_send)
-                  0000e50c    0000000a     spi.obj (.text:spi_transfer)
-                  0000e516    00000008     rts430_eabi.lib : isr_trap.asm.obj (.text:_isr:__TI_ISR_TRAP)
-                  0000e51e    00000008     spi.obj (.text:spi_rxready)
-                  0000e526    00000008     spi.obj (.text:spi_txready)
-                  0000e52e    00000006     rts430_eabi.lib : exit.c.obj (.text:abort)
-                  0000e534    00000006     spi.obj (.text:spi_chipDisable)
-                  0000e53a    00000006     spi.obj (.text:spi_chipEnable)
-                  0000e540    00000006     sx1276.obj (.text:sx1276_get_paselect)
-                  0000e546    00000004     rts430_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
-                  0000e54a    00000002                     : startup.c.obj (.text:_system_post_cinit)
+                  0000cc98    0000034e     sx1276.obj (.text:sx1276_set_rx)
+                  0000cfe6    000002fa     rts430_eabi.lib : addd.c.obj (.text:__mspabi_addd)
+                  0000d2e0    000002cc     sx1276.obj (.text:sx1276_on_dio0irq)
+                  0000d5ac    00000286     rts430_eabi.lib : frcmpyd.c.obj (.text:__TI_frcmpyd)
+                  0000d832    0000026e                     : mpyd.c.obj (.text:__mspabi_mpyd)
+                  0000daa0    00000260                     : frcaddd.c.obj (.text:__TI_frcaddd)
+                  0000dd00    00000238                     : divd.c.obj (.text:__mspabi_divd)
+                  0000df38    000000e4     sx1276.obj (.text:sx1276_rxchain_calibration)
+                  0000e01c    000000d8     main.obj (.text:main)
+                  0000e0f4    000000be     rts430_eabi.lib : renormd.c.obj (.text:__TI_renormd)
+                  0000e1b2    000000ba     main.obj (.text:rf_init_lora)
+                  0000e26c    0000008a     rts430_eabi.lib : fltuld.c.obj (.text:__mspabi_fltuld)
+                  0000e2f6    0000007c                     : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
+                  0000e372    00000074                     : fixdul.c.obj (.text:__mspabi_fixdul)
+                  0000e3e6    00000072     sx1276.obj (.text:sx1276_set_modem)
+                  0000e458    0000006c     uart.obj (.text:uart_printhex32)
+                  0000e4c4    0000006a     sx1276.obj (.text:sx1276_init)
+                  0000e52e    0000005e     main.obj (.text:OnRxDone)
+                  0000e58c    0000005c     rts430_eabi.lib : lsr32.asm.obj (.text:l_lsr_const)
+                  0000e5e8    0000005c     sx1276.obj (.text:sx1276_get_fsk_bandwidthregvalue)
+                  0000e644    00000058     rts430_eabi.lib : div32u.asm.obj (.text)
+                  0000e69c    00000058     sx1276.obj (.text:sx1276_set_channel)
+                  0000e6f4    00000056     uart.obj (.text:uart_printhex8)
+                  0000e74a    0000004c     rts430_eabi.lib : lsr16.asm.obj (.text)
+                  0000e796    00000048     mcu.obj (.text:mcu_init)
+                  0000e7de    00000042     rts430_eabi.lib : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
+                  0000e820    0000003e                     : asr32.asm.obj (.text:l_asr_const)
+                  0000e85e    0000003e                     : lsl32.asm.obj (.text:l_lsl_const)
+                  0000e89c    0000003e     spi.obj (.text:spi_init)
+                  0000e8da    0000003e     sx1276.obj (.text:sx1276_read_buffer)
+                  0000e918    00000032     main.obj (.text:Port_2)
+                  0000e94a    0000002e     uart.obj (.text:uart_init)
+                  0000e978    0000002c     rts430_eabi.lib : asr16.asm.obj (.text)
+                  0000e9a4    0000002c                     : lsl16.asm.obj (.text)
+                  0000e9d0    0000002c     sx1276.obj (.text:sx1275_reset)
+                  0000e9fc    00000026     rts430_eabi.lib : mult32.asm.obj (.text)
+                  0000ea22    00000026     sx1276.obj (.text:sx1276_read)
+                  0000ea48    00000024     sx1276.obj (.text:sx1276_write)
+                  0000ea6c    00000022     mcu.obj (.text:mcu_delayms)
+                  0000ea8e    00000020     uart.obj (.text:uart_write)
+                  0000eaae    0000001c     rts430_eabi.lib : boot.c.obj (.text:_c_int00_noargs)
+                  0000eaca    0000001c     sx1276.obj (.text:sx1276_set_opmode)
+                  0000eae6    00000018     main.obj (.text:OnTxDone)
+                  0000eafe    00000016     rts430_eabi.lib : div16u.asm.obj (.text)
+                  0000eb14    00000014                     : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset:__TI_zero_init_nomemset)
+                  0000eb28    00000014                     : memset.c.obj (.text:memset)
+                  0000eb3c    00000014                     : mult16.asm.obj (.text)
+                  0000eb50    00000012                     : fixdu.c.obj (.text:__mspabi_fixdu)
+                  0000eb62    00000012                     : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+                  0000eb74    00000012                     : lsr32.asm.obj (.text:l_lsr)
+                  0000eb86    00000012                     : memcpy.c.obj (.text:memcpy)
+                  0000eb98    00000010                     : asr32.asm.obj (.text:l_asr)
+                  0000eba8    00000010                     : lsl32.asm.obj (.text:l_lsl)
+                  0000ebb8    00000010                     : epilog.asm.obj (.text)
+                  0000ebc8    0000000c     spi.obj (.text:spi_recv)
+                  0000ebd4    0000000c     sx1276.obj (.text:sx1276_read_fifo)
+                  0000ebe0    0000000c     uart.obj (.text:uart_writec)
+                  0000ebec    0000000a     main.obj (.text:OnRxError)
+                  0000ebf6    0000000a     spi.obj (.text:spi_send)
+                  0000ec00    0000000a     spi.obj (.text:spi_transfer)
+                  0000ec0a    00000008     rts430_eabi.lib : isr_trap.asm.obj (.text:_isr:__TI_ISR_TRAP)
+                  0000ec12    00000008     spi.obj (.text:spi_rxready)
+                  0000ec1a    00000008     spi.obj (.text:spi_txready)
+                  0000ec22    00000006     rts430_eabi.lib : exit.c.obj (.text:abort)
+                  0000ec28    00000006     spi.obj (.text:spi_chipDisable)
+                  0000ec2e    00000006     spi.obj (.text:spi_chipEnable)
+                  0000ec34    00000006     sx1276.obj (.text:sx1276_get_paselect)
+                  0000ec3a    00000004     rts430_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
+                  0000ec3e    00000002                     : startup.c.obj (.text:_system_post_cinit)
 
-.const     0    0000e54c    00000150     
-                  0000e54c    00000084     sx1276.obj (.const:fsk_bandwidths)
-                  0000e5d0    00000080     main.obj (.const:.string)
-                  0000e650    00000040     sx1276.obj (.const:radio_registers)
-                  0000e690    0000000c     sx1276.obj (.const:.string)
+.const     0    0000ec40    000000fa     
+                  0000ec40    00000084     sx1276.obj (.const:fsk_bandwidths)
+                  0000ecc4    00000040     sx1276.obj (.const:radio_registers)
+                  0000ed04    00000036     main.obj (.const:.string)
 
-.cinit     0    0000e69c    0000001a     
-                  0000e69c    00000007     (.cinit..data.load) [load image]
-                  0000e6a3    00000001     --HOLE-- [fill = 0]
-                  0000e6a4    00000006     (__TI_handler_table)
-                  0000e6aa    00000004     (.cinit..bss.load) [load image, compression = zero_init]
-                  0000e6ae    00000008     (__TI_cinit_table)
+.cinit     0    0000ed3a    0000001a     
+                  0000ed3a    00000007     (.cinit..data.load) [load image]
+                  0000ed41    00000001     --HOLE-- [fill = 0]
+                  0000ed42    00000006     (__TI_handler_table)
+                  0000ed48    00000004     (.cinit..bss.load) [load image, compression = zero_init]
+                  0000ed4c    00000008     (__TI_cinit_table)
 
 .binit     0    0000c000    00000000     
 
@@ -204,77 +203,81 @@ $fill000   0    0000ffde    00000002
 
 MODULE SUMMARY
 
-       Module                       code   ro data   rw data
-       ------                       ----   -------   -------
+       Module                       code    ro data   rw data
+       ------                       ----    -------   -------
     .\
-       sx1276.obj                   4194   208       344    
-       main.obj                     698    130       48     
-       uart.obj                     284    0         0      
-       spi.obj                      122    0         1      
-       mcu.obj                      122    0         0      
-    +--+----------------------------+------+---------+---------+
-       Total:                       5420   338       393    
-                                                            
+       sx1276.obj                   4496    196       344    
+       main.obj                     580     56        16     
+       uart.obj                     284     0         0      
+       spi.obj                      122     0         1      
+       mcu.obj                      106     0         0      
+    +--+----------------------------+-------+---------+---------+
+       Total:                       5588    252       361    
+                                                             
     D:\CCS\ccs\tools\compiler\ti-cgt-msp430_20.2.0.LTS\lib\rts430_eabi.lib
-       frcdivd.c.obj                1144   0         0      
-       frcmpyd.c.obj                646    0         0      
-       mpyd.c.obj                   622    0         0      
-       divd.c.obj                   568    0         0      
-       fltuld.c.obj                 138    0         0      
-       copy_decompress_lzss.c.obj   124    0         0      
-       fixdul.c.obj                 116    0         0      
-       lsr32.asm.obj                110    0         0      
-       div32u.asm.obj               88     0         0      
-       lsr16.asm.obj                76     0         0      
-       autoinit.c.obj               66     0         0      
-       asr32.asm.obj                62     0         0      
-       lsl32.asm.obj                62     0         0      
-       asr16.asm.obj                44     0         0      
-       lsl16.asm.obj                44     0         0      
-       mult32.asm.obj               38     0         0      
-       boot.c.obj                   28     2         0      
-       div16u.asm.obj               22     0         0      
-       copy_zero_init.c.obj         20     0         0      
-       mult16.asm.obj               20     0         0      
-       copy_decompress_none.c.obj   18     0         0      
-       fixdu.c.obj                  18     0         0      
-       memcpy.c.obj                 18     0         0      
-       epilog.asm.obj               16     0         0      
-       isr_trap.asm.obj             8      0         0      
-       exit.c.obj                   6      0         0      
-       pre_init.c.obj               4      0         0      
-       int00.asm.obj                0      2         0      
-       int02.asm.obj                0      2         0      
-       int05.asm.obj                0      2         0      
-       int06.asm.obj                0      2         0      
-       int07.asm.obj                0      2         0      
-       int08.asm.obj                0      2         0      
-       int09.asm.obj                0      2         0      
-       int10.asm.obj                0      2         0      
-       int11.asm.obj                0      2         0      
-       int12.asm.obj                0      2         0      
-       int13.asm.obj                0      2         0      
-       int14.asm.obj                0      2         0      
-       startup.c.obj                2      0         0      
-    +--+----------------------------+------+---------+---------+
-       Total:                       4128   26        0      
-                                                            
-       Stack:                       0      0         80     
-       Linker Generated:            0      25        0      
-    +--+----------------------------+------+---------+---------+
-       Grand Total:                 9548   389       473    
+       frcdivd.c.obj                1144    0         0      
+       addd.c.obj                   762     0         0      
+       frcmpyd.c.obj                646     0         0      
+       mpyd.c.obj                   622     0         0      
+       frcaddd.c.obj                608     0         0      
+       divd.c.obj                   568     0         0      
+       renormd.c.obj                190     0         0      
+       fltuld.c.obj                 138     0         0      
+       copy_decompress_lzss.c.obj   124     0         0      
+       fixdul.c.obj                 116     0         0      
+       lsr32.asm.obj                110     0         0      
+       div32u.asm.obj               88      0         0      
+       asr32.asm.obj                78      0         0      
+       lsl32.asm.obj                78      0         0      
+       lsr16.asm.obj                76      0         0      
+       autoinit.c.obj               66      0         0      
+       asr16.asm.obj                44      0         0      
+       lsl16.asm.obj                44      0         0      
+       mult32.asm.obj               38      0         0      
+       boot.c.obj                   28      2         0      
+       div16u.asm.obj               22      0         0      
+       copy_zero_init.c.obj         20      0         0      
+       memset.c.obj                 20      0         0      
+       mult16.asm.obj               20      0         0      
+       copy_decompress_none.c.obj   18      0         0      
+       fixdu.c.obj                  18      0         0      
+       memcpy.c.obj                 18      0         0      
+       epilog.asm.obj               16      0         0      
+       isr_trap.asm.obj             8       0         0      
+       exit.c.obj                   6       0         0      
+       pre_init.c.obj               4       0         0      
+       int00.asm.obj                0       2         0      
+       int02.asm.obj                0       2         0      
+       int05.asm.obj                0       2         0      
+       int06.asm.obj                0       2         0      
+       int07.asm.obj                0       2         0      
+       int08.asm.obj                0       2         0      
+       int09.asm.obj                0       2         0      
+       int10.asm.obj                0       2         0      
+       int11.asm.obj                0       2         0      
+       int12.asm.obj                0       2         0      
+       int13.asm.obj                0       2         0      
+       int14.asm.obj                0       2         0      
+       startup.c.obj                2       0         0      
+    +--+----------------------------+-------+---------+---------+
+       Total:                       5740    26        0      
+                                                             
+       Stack:                       0       0         80     
+       Linker Generated:            0       25        0      
+    +--+----------------------------+-------+---------+---------+
+       Grand Total:                 11328   303       441    
 
 
 LINKER GENERATED COPY TABLES
 
-__TI_cinit_table @ 0000e6ae records: 2, size/record: 4, table size: 8
-	.data: load addr=0000e69c, load size=00000007 bytes, run addr=00000386, run size=00000003 bytes, compression=copy
-	.bss: load addr=0000e6aa, load size=00000004 bytes, run addr=00000200, run size=00000186 bytes, compression=zero_init
+__TI_cinit_table @ 0000ed4c records: 2, size/record: 4, table size: 8
+	.data: load addr=0000ed3a, load size=00000007 bytes, run addr=00000366, run size=00000003 bytes, compression=copy
+	.bss: load addr=0000ed48, load size=00000004 bytes, run addr=00000200, run size=00000166 bytes, compression=zero_init
 
 
 LINKER GENERATED HANDLER TABLE
 
-__TI_handler_table @ 0000e6a4 records: 3, size/record: 2, table size: 6
+__TI_handler_table @ 0000ed42 records: 3, size/record: 2, table size: 6
 	index: 0, handler: __TI_zero_init
 	index: 1, handler: __TI_decompress_lzss
 	index: 2, handler: __TI_decompress_none
@@ -294,7 +297,7 @@ address   name
 00000057  BCSCTL1                       
 00000058  BCSCTL2                       
 00000053  BCSCTL3                       
-0000e52e  C$$EXIT                       
+0000ec22  C$$EXIT                       
 00000059  CACTL1                        
 0000005a  CACTL2                        
 000010fb  CALBC1_12MHZ                  
@@ -314,9 +317,9 @@ address   name
 00000001  IE2                           
 00000002  IFG1                          
 00000003  IFG2                          
-0000dae2  OnRxDone                      
-0000e4ee  OnRxError                     
-0000e4f8  OnTxDone                      
+0000e52e  OnRxDone                      
+0000ebec  OnRxError                     
+0000eae6  OnTxDone                      
 00000022  P1DIR                         
 00000025  P1IE                          
 00000024  P1IES                         
@@ -341,8 +344,7 @@ address   name
 00000010  P3REN                         
 0000001b  P3SEL                         
 00000043  P3SEL2                        
-0000e27e  Port_2                        
-0000e096  SendPing                      
+0000e918  Port_2                        
 00000172  TA0CCR0                       
 00000174  TA0CCR1                       
 00000176  TA0CCR2                       
@@ -390,16 +392,17 @@ address   name
 00000120  WDTCTL                        
 00000400  __STACK_END                   
 00000050  __STACK_SIZE                  
-0000e6ae  __TI_CINIT_Base               
-0000e6b6  __TI_CINIT_Limit              
-0000e6a4  __TI_Handler_Table_Base       
-0000e6aa  __TI_Handler_Table_Limit      
-0000e516  __TI_ISR_TRAP                 
-0000e0dc  __TI_auto_init_nobinit_nopinit
-0000dc0c  __TI_decompress_lzss          
-0000e468  __TI_decompress_none          
+0000ed4c  __TI_CINIT_Base               
+0000ed54  __TI_CINIT_Limit              
+0000ed42  __TI_Handler_Table_Base       
+0000ed48  __TI_Handler_Table_Limit      
+0000ec0a  __TI_ISR_TRAP                 
+0000e7de  __TI_auto_init_nobinit_nopinit
+0000e2f6  __TI_decompress_lzss          
+0000eb62  __TI_decompress_none          
+0000daa0  __TI_frcaddd                  
 0000c000  __TI_frcdivd                  
-0000cf7c  __TI_frcmpyd                  
+0000d5ac  __TI_frcmpyd                  
 0000ffe0  __TI_int00                    
 0000ffe4  __TI_int02                    
 0000ffe6  __TI_int03                    
@@ -416,170 +419,170 @@ address   name
 ffffffff  __TI_pprof_out_hndl           
 ffffffff  __TI_prof_data_size           
 ffffffff  __TI_prof_data_start          
-0000e42e  __TI_zero_init_nomemset       
+0000e0f4  __TI_renormd                  
+0000eb14  __TI_zero_init_nomemset       
 ffffffff  __c_args__                    
-0000d470  __mspabi_divd                 
-0000e418  __mspabi_divu                 
-0000defc  __mspabi_divul                
-0000e456  __mspabi_fixdu                
-0000dc88  __mspabi_fixdul               
-0000db82  __mspabi_fltuld               
-0000e4ba  __mspabi_func_epilog_1        
-0000e4b8  __mspabi_func_epilog_2        
-0000e4b6  __mspabi_func_epilog_3        
-0000e4b4  __mspabi_func_epilog_4        
-0000e4b2  __mspabi_func_epilog_5        
-0000e4b0  __mspabi_func_epilog_6        
-0000e4ae  __mspabi_func_epilog_7        
-0000d202  __mspabi_mpyd                 
-0000e442  __mspabi_mpyi                 
-0000e442  __mspabi_mpyi_sw              
-0000e32e  __mspabi_mpyl                 
-0000e32e  __mspabi_mpyl_sw              
-0000e418  __mspabi_remu                 
-0000defc  __mspabi_remul                
-0000e2d6  __mspabi_slli                 
-0000e2fe  __mspabi_slli_1               
-0000e2ec  __mspabi_slli_10              
-0000e2ea  __mspabi_slli_11              
-0000e2e8  __mspabi_slli_12              
-0000e2e6  __mspabi_slli_13              
-0000e2e4  __mspabi_slli_14              
-0000e2e2  __mspabi_slli_15              
-0000e2fc  __mspabi_slli_2               
-0000e2fa  __mspabi_slli_3               
-0000e2f8  __mspabi_slli_4               
-0000e2f6  __mspabi_slli_5               
-0000e2f4  __mspabi_slli_6               
-0000e2f2  __mspabi_slli_7               
-0000e2f0  __mspabi_slli_8               
-0000e2ee  __mspabi_slli_9               
-0000e194  __mspabi_slll_1               
-0000e170  __mspabi_slll_10              
-0000e16c  __mspabi_slll_11              
-0000e168  __mspabi_slll_12              
-0000e164  __mspabi_slll_13              
-0000e160  __mspabi_slll_14              
-0000e15c  __mspabi_slll_15              
-0000e190  __mspabi_slll_2               
-0000e18c  __mspabi_slll_3               
-0000e188  __mspabi_slll_4               
-0000e184  __mspabi_slll_5               
-0000e180  __mspabi_slll_6               
-0000e17c  __mspabi_slll_7               
-0000e178  __mspabi_slll_8               
-0000e174  __mspabi_slll_9               
-0000e2aa  __mspabi_srai                 
-0000e2d2  __mspabi_srai_1               
-0000e2c0  __mspabi_srai_10              
-0000e2be  __mspabi_srai_11              
-0000e2bc  __mspabi_srai_12              
-0000e2ba  __mspabi_srai_13              
-0000e2b8  __mspabi_srai_14              
-0000e2b6  __mspabi_srai_15              
-0000e2d0  __mspabi_srai_2               
-0000e2ce  __mspabi_srai_3               
-0000e2cc  __mspabi_srai_4               
-0000e2ca  __mspabi_srai_5               
-0000e2c8  __mspabi_srai_6               
-0000e2c6  __mspabi_srai_7               
-0000e2c4  __mspabi_srai_8               
-0000e2c2  __mspabi_srai_9               
-0000e156  __mspabi_sral_1               
-0000e132  __mspabi_sral_10              
-0000e12e  __mspabi_sral_11              
-0000e12a  __mspabi_sral_12              
-0000e126  __mspabi_sral_13              
-0000e122  __mspabi_sral_14              
-0000e11e  __mspabi_sral_15              
-0000e152  __mspabi_sral_2               
-0000e14e  __mspabi_sral_3               
-0000e14a  __mspabi_sral_4               
-0000e146  __mspabi_sral_5               
-0000e142  __mspabi_sral_6               
-0000e13e  __mspabi_sral_7               
-0000e13a  __mspabi_sral_8               
-0000e136  __mspabi_sral_9               
-0000e002  __mspabi_srli                 
-0000e048  __mspabi_srli_1               
-0000e024  __mspabi_srli_10              
-0000e020  __mspabi_srli_11              
-0000e01c  __mspabi_srli_12              
-0000e018  __mspabi_srli_13              
-0000e014  __mspabi_srli_14              
-0000e010  __mspabi_srli_15              
-0000e044  __mspabi_srli_2               
-0000e040  __mspabi_srli_3               
-0000e03c  __mspabi_srli_4               
-0000e038  __mspabi_srli_5               
-0000e034  __mspabi_srli_6               
-0000e030  __mspabi_srli_7               
-0000e02c  __mspabi_srli_8               
-0000e028  __mspabi_srli_9               
-0000e47a  __mspabi_srll                 
-0000de98  __mspabi_srll_1               
-0000de62  __mspabi_srll_10              
-0000de5c  __mspabi_srll_11              
-0000de56  __mspabi_srll_12              
-0000de50  __mspabi_srll_13              
-0000de4a  __mspabi_srll_14              
-0000de44  __mspabi_srll_15              
-0000de92  __mspabi_srll_2               
-0000de8c  __mspabi_srll_3               
-0000de86  __mspabi_srll_4               
-0000de80  __mspabi_srll_5               
-0000de7a  __mspabi_srll_6               
-0000de74  __mspabi_srll_7               
-0000de6e  __mspabi_srll_8               
-0000de68  __mspabi_srll_9               
-0000e3e0  _c_int00_noargs               
+0000cfe6  __mspabi_addd                 
+0000dd00  __mspabi_divd                 
+0000eafe  __mspabi_divu                 
+0000e644  __mspabi_divul                
+0000eb50  __mspabi_fixdu                
+0000e372  __mspabi_fixdul               
+0000e26c  __mspabi_fltuld               
+0000ebc4  __mspabi_func_epilog_1        
+0000ebc2  __mspabi_func_epilog_2        
+0000ebc0  __mspabi_func_epilog_3        
+0000ebbe  __mspabi_func_epilog_4        
+0000ebbc  __mspabi_func_epilog_5        
+0000ebba  __mspabi_func_epilog_6        
+0000ebb8  __mspabi_func_epilog_7        
+0000d832  __mspabi_mpyd                 
+0000eb3c  __mspabi_mpyi                 
+0000eb3c  __mspabi_mpyi_sw              
+0000e9fc  __mspabi_mpyl                 
+0000e9fc  __mspabi_mpyl_sw              
+0000eafe  __mspabi_remu                 
+0000e644  __mspabi_remul                
+0000e9a4  __mspabi_slli                 
+0000e9cc  __mspabi_slli_1               
+0000e9ba  __mspabi_slli_10              
+0000e9b8  __mspabi_slli_11              
+0000e9b6  __mspabi_slli_12              
+0000e9b4  __mspabi_slli_13              
+0000e9b2  __mspabi_slli_14              
+0000e9b0  __mspabi_slli_15              
+0000e9ca  __mspabi_slli_2               
+0000e9c8  __mspabi_slli_3               
+0000e9c6  __mspabi_slli_4               
+0000e9c4  __mspabi_slli_5               
+0000e9c2  __mspabi_slli_6               
+0000e9c0  __mspabi_slli_7               
+0000e9be  __mspabi_slli_8               
+0000e9bc  __mspabi_slli_9               
+0000eba8  __mspabi_slll                 
+0000e896  __mspabi_slll_1               
+0000e872  __mspabi_slll_10              
+0000e86e  __mspabi_slll_11              
+0000e86a  __mspabi_slll_12              
+0000e866  __mspabi_slll_13              
+0000e862  __mspabi_slll_14              
+0000e85e  __mspabi_slll_15              
+0000e892  __mspabi_slll_2               
+0000e88e  __mspabi_slll_3               
+0000e88a  __mspabi_slll_4               
+0000e886  __mspabi_slll_5               
+0000e882  __mspabi_slll_6               
+0000e87e  __mspabi_slll_7               
+0000e87a  __mspabi_slll_8               
+0000e876  __mspabi_slll_9               
+0000e978  __mspabi_srai                 
+0000e9a0  __mspabi_srai_1               
+0000e98e  __mspabi_srai_10              
+0000e98c  __mspabi_srai_11              
+0000e98a  __mspabi_srai_12              
+0000e988  __mspabi_srai_13              
+0000e986  __mspabi_srai_14              
+0000e984  __mspabi_srai_15              
+0000e99e  __mspabi_srai_2               
+0000e99c  __mspabi_srai_3               
+0000e99a  __mspabi_srai_4               
+0000e998  __mspabi_srai_5               
+0000e996  __mspabi_srai_6               
+0000e994  __mspabi_srai_7               
+0000e992  __mspabi_srai_8               
+0000e990  __mspabi_srai_9               
+0000eb98  __mspabi_sral                 
+0000e858  __mspabi_sral_1               
+0000e834  __mspabi_sral_10              
+0000e830  __mspabi_sral_11              
+0000e82c  __mspabi_sral_12              
+0000e828  __mspabi_sral_13              
+0000e824  __mspabi_sral_14              
+0000e820  __mspabi_sral_15              
+0000e854  __mspabi_sral_2               
+0000e850  __mspabi_sral_3               
+0000e84c  __mspabi_sral_4               
+0000e848  __mspabi_sral_5               
+0000e844  __mspabi_sral_6               
+0000e840  __mspabi_sral_7               
+0000e83c  __mspabi_sral_8               
+0000e838  __mspabi_sral_9               
+0000e74a  __mspabi_srli                 
+0000e790  __mspabi_srli_1               
+0000e76c  __mspabi_srli_10              
+0000e768  __mspabi_srli_11              
+0000e764  __mspabi_srli_12              
+0000e760  __mspabi_srli_13              
+0000e75c  __mspabi_srli_14              
+0000e758  __mspabi_srli_15              
+0000e78c  __mspabi_srli_2               
+0000e788  __mspabi_srli_3               
+0000e784  __mspabi_srli_4               
+0000e780  __mspabi_srli_5               
+0000e77c  __mspabi_srli_6               
+0000e778  __mspabi_srli_7               
+0000e774  __mspabi_srli_8               
+0000e770  __mspabi_srli_9               
+0000eb74  __mspabi_srll                 
+0000e5e0  __mspabi_srll_1               
+0000e5aa  __mspabi_srll_10              
+0000e5a4  __mspabi_srll_11              
+0000e59e  __mspabi_srll_12              
+0000e598  __mspabi_srll_13              
+0000e592  __mspabi_srll_14              
+0000e58c  __mspabi_srll_15              
+0000e5da  __mspabi_srll_2               
+0000e5d4  __mspabi_srll_3               
+0000e5ce  __mspabi_srll_4               
+0000e5c8  __mspabi_srll_5               
+0000e5c2  __mspabi_srll_6               
+0000e5bc  __mspabi_srll_7               
+0000e5b6  __mspabi_srll_8               
+0000e5b0  __mspabi_srll_9               
+0000eaae  _c_int00_noargs               
 0000fffe  _reset_vector                 
 000003b0  _stack                        
-0000e54a  _system_post_cinit            
-0000e546  _system_pre_init              
-0000e52e  abort                         
-00000356  buffer                        
-0000e54c  fsk_bandwidths                
-0000d89e  main                          
-0000e39e  mcu_delayms                   
-0000e04e  mcu_init                      
-0000e49e  mcu_memcpy1                   
-0000e48c  memcpy                        
-0000e650  radio_registers               
-0000d978  rf_init_lora                  
-00000388  spi_buf                       
-0000e534  spi_chipDisable               
-0000e53a  spi_chipEnable                
-0000e19a  spi_init                      
-0000e4be  spi_recv                      
-0000e51e  spi_rxready                   
-0000e502  spi_send                      
-0000e50c  spi_transfer                  
-0000e526  spi_txready                   
-00000386  state                         
-0000e302  sx1275_reset                  
+0000ec3e  _system_post_cinit            
+0000ec3a  _system_pre_init              
+0000ec22  abort                         
+0000ec40  fsk_bandwidths                
+0000e01c  main                          
+0000ea6c  mcu_delayms                   
+0000e796  mcu_init                      
+0000eb86  memcpy                        
+0000eb28  memset                        
+0000ecc4  radio_registers               
+0000e1b2  rf_init_lora                  
+00000368  spi_buf                       
+0000ec28  spi_chipDisable               
+0000ec2e  spi_chipEnable                
+0000e89c  spi_init                      
+0000ebc8  spi_recv                      
+0000ec12  spi_rxready                   
+0000ebf6  spi_send                      
+0000ec00  spi_transfer                  
+0000ec1a  spi_txready                   
+00000366  state                         
+0000e9d0  sx1275_reset                  
 00000300  sx1276                        
-0000ddda  sx1276_init                   
-0000cc98  sx1276_on_dio0irq             
-0000e354  sx1276_read                   
-0000e1d8  sx1276_read_buffer            
-0000e4ca  sx1276_read_fifo              
-0000d7ba  sx1276_rxchain_calibration    
-0000d6a8  sx1276_send                   
-0000df54  sx1276_set_channel            
-0000dcfc  sx1276_set_modem              
-0000e3fc  sx1276_set_opmode             
+0000e4c4  sx1276_init                   
+0000d2e0  sx1276_on_dio0irq             
+0000ea22  sx1276_read                   
+0000e8da  sx1276_read_buffer            
+0000ebd4  sx1276_read_fifo              
+0000df38  sx1276_rxchain_calibration    
+0000e69c  sx1276_set_channel            
+0000e3e6  sx1276_set_modem              
+0000eaca  sx1276_set_opmode             
+0000cc98  sx1276_set_rx                 
 0000c8c0  sx1276_set_rxconfig           
-0000da32  sx1276_set_tx                 
 0000c478  sx1276_set_txconfig           
-0000e37a  sx1276_write                  
-0000e216  sx1276_write_buffer           
-0000e4d6  sx1276_write_fifo             
-0000e250  uart_init                     
-0000dd6e  uart_printhex32               
-0000dfac  uart_printhex8                
-0000e3c0  uart_write                    
-0000e4e2  uart_writec                   
+0000ea48  sx1276_write                  
+0000e94a  uart_init                     
+0000e458  uart_printhex32               
+0000e6f4  uart_printhex8                
+0000ea8e  uart_write                    
+0000ebe0  uart_writec                   
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
@@ -673,9 +676,8 @@ address   name
 000001b4  ADC10MEM                      
 000001bc  ADC10SA                       
 00000300  sx1276                        
-00000356  buffer                        
-00000386  state                         
-00000388  spi_buf                       
+00000366  state                         
+00000368  spi_buf                       
 000003b0  _stack                        
 00000400  __STACK_END                   
 000010c0  TLV_CHECKSUM                  
@@ -694,176 +696,177 @@ address   name
 0000c000  __TI_frcdivd                  
 0000c478  sx1276_set_txconfig           
 0000c8c0  sx1276_set_rxconfig           
-0000cc98  sx1276_on_dio0irq             
-0000cf7c  __TI_frcmpyd                  
-0000d202  __mspabi_mpyd                 
-0000d470  __mspabi_divd                 
-0000d6a8  sx1276_send                   
-0000d7ba  sx1276_rxchain_calibration    
-0000d89e  main                          
-0000d978  rf_init_lora                  
-0000da32  sx1276_set_tx                 
-0000dae2  OnRxDone                      
-0000db82  __mspabi_fltuld               
-0000dc0c  __TI_decompress_lzss          
-0000dc88  __mspabi_fixdul               
-0000dcfc  sx1276_set_modem              
-0000dd6e  uart_printhex32               
-0000ddda  sx1276_init                   
-0000de44  __mspabi_srll_15              
-0000de4a  __mspabi_srll_14              
-0000de50  __mspabi_srll_13              
-0000de56  __mspabi_srll_12              
-0000de5c  __mspabi_srll_11              
-0000de62  __mspabi_srll_10              
-0000de68  __mspabi_srll_9               
-0000de6e  __mspabi_srll_8               
-0000de74  __mspabi_srll_7               
-0000de7a  __mspabi_srll_6               
-0000de80  __mspabi_srll_5               
-0000de86  __mspabi_srll_4               
-0000de8c  __mspabi_srll_3               
-0000de92  __mspabi_srll_2               
-0000de98  __mspabi_srll_1               
-0000defc  __mspabi_divul                
-0000defc  __mspabi_remul                
-0000df54  sx1276_set_channel            
-0000dfac  uart_printhex8                
-0000e002  __mspabi_srli                 
-0000e010  __mspabi_srli_15              
-0000e014  __mspabi_srli_14              
-0000e018  __mspabi_srli_13              
-0000e01c  __mspabi_srli_12              
-0000e020  __mspabi_srli_11              
-0000e024  __mspabi_srli_10              
-0000e028  __mspabi_srli_9               
-0000e02c  __mspabi_srli_8               
-0000e030  __mspabi_srli_7               
-0000e034  __mspabi_srli_6               
-0000e038  __mspabi_srli_5               
-0000e03c  __mspabi_srli_4               
-0000e040  __mspabi_srli_3               
-0000e044  __mspabi_srli_2               
-0000e048  __mspabi_srli_1               
-0000e04e  mcu_init                      
-0000e096  SendPing                      
-0000e0dc  __TI_auto_init_nobinit_nopinit
-0000e11e  __mspabi_sral_15              
-0000e122  __mspabi_sral_14              
-0000e126  __mspabi_sral_13              
-0000e12a  __mspabi_sral_12              
-0000e12e  __mspabi_sral_11              
-0000e132  __mspabi_sral_10              
-0000e136  __mspabi_sral_9               
-0000e13a  __mspabi_sral_8               
-0000e13e  __mspabi_sral_7               
-0000e142  __mspabi_sral_6               
-0000e146  __mspabi_sral_5               
-0000e14a  __mspabi_sral_4               
-0000e14e  __mspabi_sral_3               
-0000e152  __mspabi_sral_2               
-0000e156  __mspabi_sral_1               
-0000e15c  __mspabi_slll_15              
-0000e160  __mspabi_slll_14              
-0000e164  __mspabi_slll_13              
-0000e168  __mspabi_slll_12              
-0000e16c  __mspabi_slll_11              
-0000e170  __mspabi_slll_10              
-0000e174  __mspabi_slll_9               
-0000e178  __mspabi_slll_8               
-0000e17c  __mspabi_slll_7               
-0000e180  __mspabi_slll_6               
-0000e184  __mspabi_slll_5               
-0000e188  __mspabi_slll_4               
-0000e18c  __mspabi_slll_3               
-0000e190  __mspabi_slll_2               
-0000e194  __mspabi_slll_1               
-0000e19a  spi_init                      
-0000e1d8  sx1276_read_buffer            
-0000e216  sx1276_write_buffer           
-0000e250  uart_init                     
-0000e27e  Port_2                        
-0000e2aa  __mspabi_srai                 
-0000e2b6  __mspabi_srai_15              
-0000e2b8  __mspabi_srai_14              
-0000e2ba  __mspabi_srai_13              
-0000e2bc  __mspabi_srai_12              
-0000e2be  __mspabi_srai_11              
-0000e2c0  __mspabi_srai_10              
-0000e2c2  __mspabi_srai_9               
-0000e2c4  __mspabi_srai_8               
-0000e2c6  __mspabi_srai_7               
-0000e2c8  __mspabi_srai_6               
-0000e2ca  __mspabi_srai_5               
-0000e2cc  __mspabi_srai_4               
-0000e2ce  __mspabi_srai_3               
-0000e2d0  __mspabi_srai_2               
-0000e2d2  __mspabi_srai_1               
-0000e2d6  __mspabi_slli                 
-0000e2e2  __mspabi_slli_15              
-0000e2e4  __mspabi_slli_14              
-0000e2e6  __mspabi_slli_13              
-0000e2e8  __mspabi_slli_12              
-0000e2ea  __mspabi_slli_11              
-0000e2ec  __mspabi_slli_10              
-0000e2ee  __mspabi_slli_9               
-0000e2f0  __mspabi_slli_8               
-0000e2f2  __mspabi_slli_7               
-0000e2f4  __mspabi_slli_6               
-0000e2f6  __mspabi_slli_5               
-0000e2f8  __mspabi_slli_4               
-0000e2fa  __mspabi_slli_3               
-0000e2fc  __mspabi_slli_2               
-0000e2fe  __mspabi_slli_1               
-0000e302  sx1275_reset                  
-0000e32e  __mspabi_mpyl                 
-0000e32e  __mspabi_mpyl_sw              
-0000e354  sx1276_read                   
-0000e37a  sx1276_write                  
-0000e39e  mcu_delayms                   
-0000e3c0  uart_write                    
-0000e3e0  _c_int00_noargs               
-0000e3fc  sx1276_set_opmode             
-0000e418  __mspabi_divu                 
-0000e418  __mspabi_remu                 
-0000e42e  __TI_zero_init_nomemset       
-0000e442  __mspabi_mpyi                 
-0000e442  __mspabi_mpyi_sw              
-0000e456  __mspabi_fixdu                
-0000e468  __TI_decompress_none          
-0000e47a  __mspabi_srll                 
-0000e48c  memcpy                        
-0000e49e  mcu_memcpy1                   
-0000e4ae  __mspabi_func_epilog_7        
-0000e4b0  __mspabi_func_epilog_6        
-0000e4b2  __mspabi_func_epilog_5        
-0000e4b4  __mspabi_func_epilog_4        
-0000e4b6  __mspabi_func_epilog_3        
-0000e4b8  __mspabi_func_epilog_2        
-0000e4ba  __mspabi_func_epilog_1        
-0000e4be  spi_recv                      
-0000e4ca  sx1276_read_fifo              
-0000e4d6  sx1276_write_fifo             
-0000e4e2  uart_writec                   
-0000e4ee  OnRxError                     
-0000e4f8  OnTxDone                      
-0000e502  spi_send                      
-0000e50c  spi_transfer                  
-0000e516  __TI_ISR_TRAP                 
-0000e51e  spi_rxready                   
-0000e526  spi_txready                   
-0000e52e  C$$EXIT                       
-0000e52e  abort                         
-0000e534  spi_chipDisable               
-0000e53a  spi_chipEnable                
-0000e546  _system_pre_init              
-0000e54a  _system_post_cinit            
-0000e54c  fsk_bandwidths                
-0000e650  radio_registers               
-0000e6a4  __TI_Handler_Table_Base       
-0000e6aa  __TI_Handler_Table_Limit      
-0000e6ae  __TI_CINIT_Base               
-0000e6b6  __TI_CINIT_Limit              
+0000cc98  sx1276_set_rx                 
+0000cfe6  __mspabi_addd                 
+0000d2e0  sx1276_on_dio0irq             
+0000d5ac  __TI_frcmpyd                  
+0000d832  __mspabi_mpyd                 
+0000daa0  __TI_frcaddd                  
+0000dd00  __mspabi_divd                 
+0000df38  sx1276_rxchain_calibration    
+0000e01c  main                          
+0000e0f4  __TI_renormd                  
+0000e1b2  rf_init_lora                  
+0000e26c  __mspabi_fltuld               
+0000e2f6  __TI_decompress_lzss          
+0000e372  __mspabi_fixdul               
+0000e3e6  sx1276_set_modem              
+0000e458  uart_printhex32               
+0000e4c4  sx1276_init                   
+0000e52e  OnRxDone                      
+0000e58c  __mspabi_srll_15              
+0000e592  __mspabi_srll_14              
+0000e598  __mspabi_srll_13              
+0000e59e  __mspabi_srll_12              
+0000e5a4  __mspabi_srll_11              
+0000e5aa  __mspabi_srll_10              
+0000e5b0  __mspabi_srll_9               
+0000e5b6  __mspabi_srll_8               
+0000e5bc  __mspabi_srll_7               
+0000e5c2  __mspabi_srll_6               
+0000e5c8  __mspabi_srll_5               
+0000e5ce  __mspabi_srll_4               
+0000e5d4  __mspabi_srll_3               
+0000e5da  __mspabi_srll_2               
+0000e5e0  __mspabi_srll_1               
+0000e644  __mspabi_divul                
+0000e644  __mspabi_remul                
+0000e69c  sx1276_set_channel            
+0000e6f4  uart_printhex8                
+0000e74a  __mspabi_srli                 
+0000e758  __mspabi_srli_15              
+0000e75c  __mspabi_srli_14              
+0000e760  __mspabi_srli_13              
+0000e764  __mspabi_srli_12              
+0000e768  __mspabi_srli_11              
+0000e76c  __mspabi_srli_10              
+0000e770  __mspabi_srli_9               
+0000e774  __mspabi_srli_8               
+0000e778  __mspabi_srli_7               
+0000e77c  __mspabi_srli_6               
+0000e780  __mspabi_srli_5               
+0000e784  __mspabi_srli_4               
+0000e788  __mspabi_srli_3               
+0000e78c  __mspabi_srli_2               
+0000e790  __mspabi_srli_1               
+0000e796  mcu_init                      
+0000e7de  __TI_auto_init_nobinit_nopinit
+0000e820  __mspabi_sral_15              
+0000e824  __mspabi_sral_14              
+0000e828  __mspabi_sral_13              
+0000e82c  __mspabi_sral_12              
+0000e830  __mspabi_sral_11              
+0000e834  __mspabi_sral_10              
+0000e838  __mspabi_sral_9               
+0000e83c  __mspabi_sral_8               
+0000e840  __mspabi_sral_7               
+0000e844  __mspabi_sral_6               
+0000e848  __mspabi_sral_5               
+0000e84c  __mspabi_sral_4               
+0000e850  __mspabi_sral_3               
+0000e854  __mspabi_sral_2               
+0000e858  __mspabi_sral_1               
+0000e85e  __mspabi_slll_15              
+0000e862  __mspabi_slll_14              
+0000e866  __mspabi_slll_13              
+0000e86a  __mspabi_slll_12              
+0000e86e  __mspabi_slll_11              
+0000e872  __mspabi_slll_10              
+0000e876  __mspabi_slll_9               
+0000e87a  __mspabi_slll_8               
+0000e87e  __mspabi_slll_7               
+0000e882  __mspabi_slll_6               
+0000e886  __mspabi_slll_5               
+0000e88a  __mspabi_slll_4               
+0000e88e  __mspabi_slll_3               
+0000e892  __mspabi_slll_2               
+0000e896  __mspabi_slll_1               
+0000e89c  spi_init                      
+0000e8da  sx1276_read_buffer            
+0000e918  Port_2                        
+0000e94a  uart_init                     
+0000e978  __mspabi_srai                 
+0000e984  __mspabi_srai_15              
+0000e986  __mspabi_srai_14              
+0000e988  __mspabi_srai_13              
+0000e98a  __mspabi_srai_12              
+0000e98c  __mspabi_srai_11              
+0000e98e  __mspabi_srai_10              
+0000e990  __mspabi_srai_9               
+0000e992  __mspabi_srai_8               
+0000e994  __mspabi_srai_7               
+0000e996  __mspabi_srai_6               
+0000e998  __mspabi_srai_5               
+0000e99a  __mspabi_srai_4               
+0000e99c  __mspabi_srai_3               
+0000e99e  __mspabi_srai_2               
+0000e9a0  __mspabi_srai_1               
+0000e9a4  __mspabi_slli                 
+0000e9b0  __mspabi_slli_15              
+0000e9b2  __mspabi_slli_14              
+0000e9b4  __mspabi_slli_13              
+0000e9b6  __mspabi_slli_12              
+0000e9b8  __mspabi_slli_11              
+0000e9ba  __mspabi_slli_10              
+0000e9bc  __mspabi_slli_9               
+0000e9be  __mspabi_slli_8               
+0000e9c0  __mspabi_slli_7               
+0000e9c2  __mspabi_slli_6               
+0000e9c4  __mspabi_slli_5               
+0000e9c6  __mspabi_slli_4               
+0000e9c8  __mspabi_slli_3               
+0000e9ca  __mspabi_slli_2               
+0000e9cc  __mspabi_slli_1               
+0000e9d0  sx1275_reset                  
+0000e9fc  __mspabi_mpyl                 
+0000e9fc  __mspabi_mpyl_sw              
+0000ea22  sx1276_read                   
+0000ea48  sx1276_write                  
+0000ea6c  mcu_delayms                   
+0000ea8e  uart_write                    
+0000eaae  _c_int00_noargs               
+0000eaca  sx1276_set_opmode             
+0000eae6  OnTxDone                      
+0000eafe  __mspabi_divu                 
+0000eafe  __mspabi_remu                 
+0000eb14  __TI_zero_init_nomemset       
+0000eb28  memset                        
+0000eb3c  __mspabi_mpyi                 
+0000eb3c  __mspabi_mpyi_sw              
+0000eb50  __mspabi_fixdu                
+0000eb62  __TI_decompress_none          
+0000eb74  __mspabi_srll                 
+0000eb86  memcpy                        
+0000eb98  __mspabi_sral                 
+0000eba8  __mspabi_slll                 
+0000ebb8  __mspabi_func_epilog_7        
+0000ebba  __mspabi_func_epilog_6        
+0000ebbc  __mspabi_func_epilog_5        
+0000ebbe  __mspabi_func_epilog_4        
+0000ebc0  __mspabi_func_epilog_3        
+0000ebc2  __mspabi_func_epilog_2        
+0000ebc4  __mspabi_func_epilog_1        
+0000ebc8  spi_recv                      
+0000ebd4  sx1276_read_fifo              
+0000ebe0  uart_writec                   
+0000ebec  OnRxError                     
+0000ebf6  spi_send                      
+0000ec00  spi_transfer                  
+0000ec0a  __TI_ISR_TRAP                 
+0000ec12  spi_rxready                   
+0000ec1a  spi_txready                   
+0000ec22  C$$EXIT                       
+0000ec22  abort                         
+0000ec28  spi_chipDisable               
+0000ec2e  spi_chipEnable                
+0000ec3a  _system_pre_init              
+0000ec3e  _system_post_cinit            
+0000ec40  fsk_bandwidths                
+0000ecc4  radio_registers               
+0000ed42  __TI_Handler_Table_Base       
+0000ed48  __TI_Handler_Table_Limit      
+0000ed4c  __TI_CINIT_Base               
+0000ed54  __TI_CINIT_Limit              
 0000ffe0  __TI_int00                    
 0000ffe4  __TI_int02                    
 0000ffe6  __TI_int03                    

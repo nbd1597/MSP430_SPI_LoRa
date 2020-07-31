@@ -968,15 +968,15 @@ void sx1276_on_dio0irq() {
           //TimerStop( &RxTimeoutTimer );
 //          uart_write("step3\n\r");
 
-          if((radio_events != 0) && (radio_events->RxDone != 0))
-          {
+          //if((radio_events != 0) && (radio_events->RxDone != 0))
+          //{
 //              uart_write
             OnRxDone(RxTxBuffer, sx1276.Settings.LoRaPacketHandler.Size, sx1276.Settings.LoRaPacketHandler.RssiValue, sx1276.Settings.LoRaPacketHandler.SnrValue);
 
-              uart_write("rxdone??\n\r");
-              int j;
-          j = 1000; //test
-          }
+//              uart_write("rxdone??\n\r");
+//              int j;
+//          j = 1000; //test
+          //}
 //          uart_write("step4\n\r");
         }
         break;
